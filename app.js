@@ -24,6 +24,8 @@ function calculateChange() {
             console.log("please tender cash more than or equal to the bill amount");
             showErrorMsg("please tender cash more than or equal to the bill amount");
         }
+    } else if (tenderedCash.value === billAmount.value) {
+        showErrorMsg("Since, tendered cash is equal to bill amount, no change is required");
     } else {
         console.log("bill amount must be greater than 0");
         showErrorMsg("bill amount must be greater than 0");
