@@ -15,6 +15,9 @@ function calculateChange() {
     errorMsg.style.display = "none";
     var changeAmount = tenderedCash.value - billAmount.value;
     if (billAmount.value > 0) {
+        if (tenderedCash.value == billAmount.value) {
+            showErrorMsg("no change required");
+        }
         if (tenderedCash.value >= billAmount.value) {
             for (let i = 0; i < denominations.length; i++) {
                 denominationQuantity[i].innerText = Math.trunc(changeAmount / denominations[i]);
@@ -24,8 +27,6 @@ function calculateChange() {
             console.log("please tender cash more than or equal to the bill amount");
             showErrorMsg("please tender cash more than or equal to the bill amount");
         }
-    } else if (tenderedCash.value === billAmount.value) {
-        showErrorMsg("Since, tendered cash is equal to bill amount, no change is required");
     } else {
         console.log("bill amount must be greater than 0");
         showErrorMsg("bill amount must be greater than 0");
