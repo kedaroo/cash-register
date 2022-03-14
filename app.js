@@ -1,6 +1,8 @@
 const billAmount = document.querySelector("#bill-amount");
 const tenderedCash = document.querySelector("#tendered-cash");
 const btnResult = document.querySelector("#btn-result");
+const btnNext = document.querySelector("#btn-next");
+const divTenderedCashInput = document.querySelector("#div-tendered-cash-input");
 const errorMsg = document.querySelector("#error-msg");
 const denominationQuantity = document.querySelectorAll(".denomination-quantity");
 
@@ -32,5 +34,12 @@ function calculateChange() {
         showErrorMsg("bill amount must be greater than 0");
     }
 }
+
+function showNextSection() {
+    console.log('hello')
+    divTenderedCashInput.style.display = "block";
+}
+
+btnNext.addEventListener("click", showNextSection);
 
 btnResult.addEventListener("click", calculateChange);
