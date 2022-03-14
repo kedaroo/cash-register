@@ -6,9 +6,9 @@ const denominationQuantity = document.querySelectorAll(".denomination-quantity")
 
 const denominations = [2000, 500, 100, 20, 10, 5, 1];
 
-function showErrorMsg(errorMsg) {
+function showErrorMsg(msg) {
     errorMsg.style.display = "block";
-    errorMsg.innerText = errorMsg;
+    errorMsg.innerText = msg;
 }
 
 function calculateChange() {
@@ -21,9 +21,11 @@ function calculateChange() {
                 changeAmount = changeAmount % denominations[i];
             }
         } else {
+            console.log("please tender cash more than or equal to the bill amount");
             showErrorMsg("please tender cash more than or equal to the bill amount");
         }
     } else {
+        console.log("bill amount must be greater than 0");
         showErrorMsg("bill amount must be greater than 0");
     }
 }
