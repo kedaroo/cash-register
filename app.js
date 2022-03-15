@@ -36,7 +36,6 @@ function calculateChange() {
 }
 
 function showNextSection() {
-    console.log('hello')
     divTenderedCashInput.style.display = "block";
 }
 
