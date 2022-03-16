@@ -8,8 +8,9 @@ const denominationQuantity = document.querySelectorAll(".denomination-quantity")
 
 const denominations = [2000, 500, 100, 20, 10, 5, 1];
 
-function showErrorMsg(msg) {
+function showErrorMsg(msg, color="red") {
     errorMsg.style.display = "block";
+    errorMsg.style.color = color;
     errorMsg.innerText = msg;
 }
 
@@ -18,7 +19,7 @@ function calculateChange() {
     var changeAmount = tenderedCash.value - billAmount.value;
     if (billAmount.value > 0) {
         if (tenderedCash.value == billAmount.value) {
-            showErrorMsg("no change required");
+            showErrorMsg("no change required", "#2a9df4");
         }
         if (tenderedCash.value >= billAmount.value) {
             for (let i = 0; i < denominations.length; i++) {
@@ -36,7 +37,13 @@ function calculateChange() {
 }
 
 function showNextSection() {
-    divTenderedCashInput.style.display = "block";
+    if (billAmount.value) {
+        errorMsg.style.display = "none";
+        btnNext.style.display = "none";
+        divTenderedCashInput.style.display = "flex";
+    } else {
+        showErrorMsg("please enter bill amount!");
+    }
 }
 
 btnNext.addEventListener("click", showNextSection);
